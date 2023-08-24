@@ -197,3 +197,8 @@ resource "aws_key_pair" "hashicat" {
   key_name   = local.private_key_filename
   public_key = tls_private_key.hashicat.public_key_openssh
 }
+module "s3_bucket" {
+  source              = "app.terraform.io/moss-enterprise-trial/s3-bucket/aws"
+  version             = "0.1.0"
+  s3_object_ownership = "BucketOwnerEnforced"
+}
